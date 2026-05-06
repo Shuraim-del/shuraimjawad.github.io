@@ -1,4 +1,292 @@
-<!DOCTYPE html>
+<!-- ORDER FORM SECTION -->
+<section id="order-form" style="padding: 60px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+  <div style="max-width: 700px; margin: 0 auto;">
+    <h2 style="text-align: center; font-size: 2.5em; margin-bottom: 10px;">Place Your Order</h2>
+    <p style="text-align: center; font-size: 1.1em; margin-bottom: 40px; opacity: 0.9;">Get AI-powered content delivered in 24 hours</p>
+    
+    <form id="aivance-order-form" style="background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+      
+      <!-- Service Selection -->
+      <div style="margin-bottom: 25px;">
+        <label style="display: block; color: #333; font-weight: 600; margin-bottom: 10px; font-size: 1.1em;">Select Service *</label>
+        <select id="service-type" required style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em; color: #333;">
+          <option value="">Choose a service...</option>
+          <option value="product-description">Product Description ($8-$30)</option>
+          <option value="blog-outline">SEO Blog Outline ($12)</option>
+          <option value="email-subjects">Email Subject Lines ($10)</option>
+        </select>
+      </div>
+
+      <!-- PRODUCT DESCRIPTION FIELDS (Hidden by default) -->
+      <div id="product-fields" style="display: none;">
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Product Name *</label>
+          <input type="text" id="product-name" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Product Category *</label>
+          <select id="product-category" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;">
+            <option value="">Select category...</option>
+            <option value="fashion">Fashion & Accessories</option>
+            <option value="tech">Technology & Electronics</option>
+            <option value="home">Home & Lifestyle</option>
+            <option value="beauty">Beauty & Personal Care</option>
+            <option value="food">Food & Beverage</option>
+            <option value="sports">Sports & Fitness</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Key Features (3-5 bullet points) *</label>
+          <textarea id="product-features" rows="4" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em; resize: vertical;" placeholder="• Feature 1&#10;• Feature 2&#10;• Feature 3"></textarea>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Target Audience *</label>
+          <input type="text" id="product-audience" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;" placeholder="e.g., fitness enthusiasts 25-40">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Tone *</label>
+          <select id="product-tone" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;">
+            <option value="">Select tone...</option>
+            <option value="luxury">Luxury & Premium</option>
+            <option value="professional">Professional & Corporate</option>
+            <option value="casual">Casual & Friendly</option>
+            <option value="playful">Playful & Fun</option>
+            <option value="eco-conscious">Eco-conscious & Sustainable</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Pain Point (What problem does it solve?)</label>
+          <textarea id="product-pain" rows="2" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em; resize: vertical;" placeholder="Optional but recommended"></textarea>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Unique Selling Point (Why choose this?)</label>
+          <textarea id="product-usp" rows="2" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em; resize: vertical;" placeholder="Optional but recommended"></textarea>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">SEO Keywords (comma-separated)</label>
+          <input type="text" id="product-keywords" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;" placeholder="e.g., reusable bottle, eco-friendly, insulated">
+        </div>
+
+        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+          <div style="flex: 1;">
+            <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Word Count *</label>
+            <select id="product-words" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;">
+              <option value="100">100 words</option>
+              <option value="150" selected>150 words</option>
+              <option value="200">200 words</option>
+            </select>
+          </div>
+          <div style="flex: 1;">
+            <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Quantity *</label>
+            <select id="product-quantity" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;">
+              <option value="1">1 product ($8)</option>
+              <option value="3">3 products ($15)</option>
+              <option value="5">5 products ($25)</option>
+              <option value="10">10 products ($30)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOG OUTLINE FIELDS (Hidden by default) -->
+      <div id="blog-fields" style="display: none;">
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Blog Topic *</label>
+          <input type="text" id="blog-topic" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;" placeholder="e.g., How to Choose the Perfect Running Shoes">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Target Keywords *</label>
+          <input type="text" id="blog-keywords" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;" placeholder="Primary keyword + secondary keywords">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Target Audience *</label>
+          <input type="text" id="blog-audience" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;" placeholder="Who is this blog for?">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Tone *</label>
+          <select id="blog-tone" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;">
+            <option value="">Select tone...</option>
+            <option value="professional">Professional & Authoritative</option>
+            <option value="conversational">Conversational & Friendly</option>
+            <option value="educational">Educational & Informative</option>
+            <option value="inspirational">Inspirational & Motivational</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Main Points to Cover</label>
+          <textarea id="blog-points" rows="4" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em; resize: vertical;" placeholder="List key topics you want included (optional)"></textarea>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Desired Outcome</label>
+          <input type="text" id="blog-outcome" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;" placeholder="What should readers learn or do?">
+        </div>
+      </div>
+
+      <!-- EMAIL SUBJECT LINES FIELDS (Hidden by default) -->
+      <div id="email-fields" style="display: none;">
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Campaign Purpose *</label>
+          <input type="text" id="email-purpose" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;" placeholder="e.g., Product launch, Sale announcement, Newsletter">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Product/Service Name *</label>
+          <input type="text" id="email-product" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Target Audience *</label>
+          <input type="text" id="email-audience" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Tone *</label>
+          <select id="email-tone" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;">
+            <option value="">Select tone...</option>
+            <option value="urgent">Urgent & Action-Driven</option>
+            <option value="friendly">Friendly & Welcoming</option>
+            <option value="professional">Professional & Formal</option>
+            <option value="playful">Playful & Creative</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Key Benefit to Highlight *</label>
+          <input type="text" id="email-benefit" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;" placeholder="What's the main value proposition?">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Quantity *</label>
+          <select id="email-quantity" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;">
+            <option value="10">10 subject lines ($10)</option>
+            <option value="20">20 subject lines ($18)</option>
+            <option value="30">30 subject lines ($25)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- DELIVERY INFO (Always visible) -->
+      <div style="border-top: 2px solid #f0f0f0; padding-top: 25px; margin-top: 25px;">
+        <h3 style="color: #333; margin-bottom: 20px; font-size: 1.3em;">Delivery Information</h3>
+        
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Your Email *</label>
+          <input type="email" id="client-email" required style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Business/Brand Name (Optional)</label>
+          <input type="text" id="client-business" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em;">
+        </div>
+
+        <div style="margin-bottom: 25px;">
+          <label style="display: block; color: #333; font-weight: 600; margin-bottom: 8px;">Special Instructions (Optional)</label>
+          <textarea id="client-instructions" rows="3" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1em; resize: vertical;" placeholder="Any specific requests or requirements?"></textarea>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" style="width: 100%; padding: 16px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-size: 1.2em; font-weight: 600; cursor: pointer; transition: transform 0.2s;">
+        Submit Order →
+      </button>
+
+      <p style="text-align: center; margin-top: 15px; color: #666; font-size: 0.9em;">✅ Delivered within 24 hours | 💯 Quality guaranteed</p>
+    </form>
+  </div>
+</section>
+
+<script>
+// Form Logic - Show/Hide Fields Based on Service Selection
+document.getElementById('service-type').addEventListener('change', function() {
+  // Hide all service-specific fields
+  document.getElementById('product-fields').style.display = 'none';
+  document.getElementById('blog-fields').style.display = 'none';
+  document.getElementById('email-fields').style.display = 'none';
+  
+  // Show selected service fields
+  const service = this.value;
+  if (service === 'product-description') {
+    document.getElementById('product-fields').style.display = 'block';
+  } else if (service === 'blog-outline') {
+    document.getElementById('blog-fields').style.display = 'block';
+  } else if (service === 'email-subjects') {
+    document.getElementById('email-fields').style.display = 'block';
+  }
+});
+
+// Form Submission Handler
+document.getElementById('aivance-order-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Collect form data
+  const formData = {
+    timestamp: new Date().toISOString(),
+    serviceType: document.getElementById('service-type').value,
+    clientEmail: document.getElementById('client-email').value,
+    clientBusiness: document.getElementById('client-business').value,
+    specialInstructions: document.getElementById('client-instructions').value
+  };
+  
+  // Add service-specific data
+  if (formData.serviceType === 'product-description') {
+    formData.productName = document.getElementById('product-name').value;
+    formData.productCategory = document.getElementById('product-category').value;
+    formData.productFeatures = document.getElementById('product-features').value;
+    formData.productAudience = document.getElementById('product-audience').value;
+    formData.productTone = document.getElementById('product-tone').value;
+    formData.productPain = document.getElementById('product-pain').value;
+    formData.productUSP = document.getElementById('product-usp').value;
+    formData.productKeywords = document.getElementById('product-keywords').value;
+    formData.productWords = document.getElementById('product-words').value;
+    formData.productQuantity = document.getElementById('product-quantity').value;
+  } else if (formData.serviceType === 'blog-outline') {
+    formData.blogTopic = document.getElementById('blog-topic').value;
+    formData.blogKeywords = document.getElementById('blog-keywords').value;
+    formData.blogAudience = document.getElementById('blog-audience').value;
+    formData.blogTone = document.getElementById('blog-tone').value;
+    formData.blogPoints = document.getElementById('blog-points').value;
+    formData.blogOutcome = document.getElementById('blog-outcome').value;
+  } else if (formData.serviceType === 'email-subjects') {
+    formData.emailPurpose = document.getElementById('email-purpose').value;
+    formData.emailProduct = document.getElementById('email-product').value;
+    formData.emailAudience = document.getElementById('email-audience').value;
+    formData.emailTone = document.getElementById('email-tone').value;
+    formData.emailBenefit = document.getElementById('email-benefit').value;
+    formData.emailQuantity = document.getElementById('email-quantity').value;
+  }
+  
+  // Send to Google Apps Script
+  fetch('YOUR_GOOGLE_SCRIPT_URL_HERE', {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData)
+  })
+  .then(() => {
+    alert('✅ Order submitted! You will receive your content within 24 hours at ' + formData.clientEmail);
+    document.getElementById('aivance-order-form').reset();
+  })
+  .catch((error) => {
+    alert('❌ Error submitting order. Please email us directly at shuraimjawad1@gmail.com');
+    console.error('Error:', error);
+  });
+});
+</script><!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
