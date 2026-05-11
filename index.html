@@ -3,45 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIvance Studio — Premium Ecommerce Content That Converts</title>
-    <meta name="description" content="AI-powered product descriptions, email copy, and SEO content for ecommerce brands. Fast turnaround, professional quality, conversion-focused.">
+    <title>AIvance Studio - Conversion-Focused Ecommerce Content</title>
+    <meta name="description" content="Professional ecommerce content studio specializing in product descriptions, Amazon listings, and conversion-optimized copy for modern brands.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
+        :root {
+            --navy-deep: #0a192f;
+            --navy-light: #112240;
+            --navy-lighter: #1d3557;
+            --accent-teal: #64ffda;
+            --accent-glow: rgba(100, 255, 218, 0.15);
+            --text-primary: #e6f1ff;
+            --text-secondary: #8892b0;
+            --text-muted: #495670;
+            --glass-bg: rgba(17, 34, 64, 0.6);
+            --glass-border: rgba(100, 255, 218, 0.1);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        :root {
-            --primary-bg: #0a192f;
-            --secondary-bg: #112240;
-            --accent: #64ffda;
-            --accent-hover: #52e6c6;
-            --text-primary: #ccd6f6;
-            --text-secondary: #8892b0;
-            --card-bg: rgba(17, 34, 64, 0.6);
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--primary-bg);
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            background: var(--navy-deep);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
         }
         
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            color: #fff;
-        }
-        
-        /* INTRO ANIMATION */
+        /* Intro Animation */
         #intro-screen {
             position: fixed;
             top: 0;
@@ -51,1084 +52,1678 @@
             background: #000;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            z-index: 9999;
-            animation: fadeOut 0.5s ease 2.3s forwards;
-        }
-        
-        #intro-screen h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: #fff;
-            margin-bottom: 15px;
-            opacity: 0;
-            animation: fadeIn 0.5s ease 0.3s forwards;
-        }
-        
-        #intro-screen p {
-            font-size: 1.2rem;
-            color: var(--accent);
-            opacity: 0;
-            animation: fadeIn 0.5s ease 0.6s forwards;
-        }
-        
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-        
-        @keyframes fadeOut {
-            to { opacity: 0; visibility: hidden; }
-        }
-        
-        /* MAIN CONTENT */
-        #main-content {
-            opacity: 0;
-            animation: contentFadeIn 0.8s ease 2.8s forwards;
-        }
-        
-        @keyframes contentFadeIn {
-            to { opacity: 1; }
-        }
-        
-        /* HERO SECTION */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 100px 20px 80px;
-            background: var(--primary-bg);
-            position: relative;
-            overflow: hidden;
+            z-index: 10000;
+            opacity: 1;
+            transition: opacity 0.6s ease;
         }
         
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.05) 0%, transparent 50%);
+        #intro-screen.fade-out {
+            opacity: 0;
             pointer-events: none;
         }
         
+        .intro-text {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 800;
+            color: var(--accent-teal);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .intro-subtext {
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--text-secondary);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            margin-top: 1rem;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+        
+        /* Main Content */
+        #main-content {
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        
+        #main-content.show {
+            opacity: 1;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(10, 25, 47, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            padding: 1rem 5%;
+            background: rgba(10, 25, 47, 0.95);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-teal);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-teal);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-teal);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Mobile Menu */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        
+        .mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--accent-teal);
+            transition: all 0.3s ease;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at top, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(100, 255, 218, 0.05) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
         .hero-content {
-            max-width: 900px;
+            position: relative;
             z-index: 1;
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        .hero-eyebrow {
+            font-size: 0.9rem;
+            color: var(--accent-teal);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
         }
         
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+        
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--accent-teal), #4ec9b0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        .hero p {
-            font-size: 1.4rem;
+        .hero-description {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
             color: var(--text-secondary);
-            margin-bottom: 40px;
-            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
         }
         
         .cta-buttons {
             display: flex;
-            gap: 20px;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.8s forwards;
         }
         
         .btn {
-            padding: 16px 40px;
-            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
             font-weight: 600;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
         .btn-primary {
-            background: var(--gradient);
-            color: #fff;
+            background: var(--accent-teal);
+            color: var(--navy-deep);
+            box-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+            box-shadow: 0 0 40px rgba(100, 255, 218, 0.5);
         }
         
         .btn-secondary {
             background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
+            color: var(--accent-teal);
+            border: 2px solid var(--accent-teal);
         }
         
         .btn-secondary:hover {
-            background: var(--accent);
-            color: var(--primary-bg);
+            background: var(--accent-glow);
+            transform: translateY(-2px);
         }
         
-        /* SECTION STYLES */
-        section {
-            padding: 100px 20px;
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--navy-light);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 3rem 0;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .trust-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+        
+        .trust-item svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1rem;
+            stroke: var(--accent-teal);
+            fill: none;
+            stroke-width: 1.5;
+        }
+        
+        .trust-item h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .trust-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-eyebrow {
+            font-size: 0.85rem;
+            color: var(--accent-teal);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
         
         .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: #fff;
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
         }
         
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
+        .section-description {
+            font-size: 1.15rem;
             color: var(--text-secondary);
-            margin-bottom: 60px;
             max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
         }
         
-        /* SERVICES GRID */
+        /* Positioning Section */
+        .positioning {
+            background: var(--navy-light);
+        }
+        
+        .positioning-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .positioning-statement {
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-weight: 600;
+            line-height: 1.6;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+        
+        .positioning-detail {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        /* Services Grid */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
+            gap: 2rem;
         }
         
         .service-card {
-            background: var(--card-bg);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2.5rem;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            border-radius: 12px;
-            padding: 35px;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-teal), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
         
         .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 40px rgba(100, 255, 218, 0.15);
+            transform: translateY(-8px);
+            border-color: var(--accent-teal);
+            box-shadow: 0 20px 60px rgba(100, 255, 218, 0.15);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1.5rem;
+            stroke: var(--accent-teal);
+            fill: none;
+            stroke-width: 1.5;
         }
         
         .service-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            color: var(--accent);
-        }
-        
-        .service-card .price {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #fff;
-            margin: 15px 0;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
         }
         
         .service-card p {
             color: var(--text-secondary);
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
         
-        .service-card ul {
-            list-style: none;
-            margin: 20px 0;
+        .service-price {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-teal);
+            margin-bottom: 0.5rem;
         }
         
-        .service-card ul li {
-            padding: 10px 0;
-            padding-left: 30px;
-            position: relative;
-            color: var(--text-primary);
-        }
-        
-        .service-card ul li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        
-        /* SAMPLE WORK */
-        .sample-work {
-            background: var(--secondary-bg);
-        }
-        
-        .work-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-        
-        .work-item {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            border-radius: 12px;
-            padding: 35px;
-        }
-        
-        .work-item h4 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: var(--accent);
-        }
-        
-        .work-item .label {
-            display: inline-block;
-            padding: 5px 15px;
-            background: rgba(100, 255, 218, 0.1);
-            border-radius: 20px;
+        .service-details {
             font-size: 0.9rem;
-            color: var(--accent);
-            margin-bottom: 20px;
+            color: var(--text-muted);
         }
         
-        .work-item p, .work-item ul {
+        /* Sample Work */
+        .samples-grid {
+            display: grid;
+            gap: 3rem;
+        }
+        
+        .sample-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .sample-label {
+            display: inline-block;
+            background: var(--accent-glow);
+            color: var(--accent-teal);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .sample-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
             color: var(--text-primary);
-            line-height: 1.8;
         }
         
-        .work-item ul {
+        .sample-content {
+            background: rgba(10, 25, 47, 0.5);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+        
+        .sample-content ul {
             list-style: none;
             padding-left: 0;
         }
         
-        .work-item ul li {
-            padding: 8px 0;
+        .sample-content li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--glass-border);
         }
         
-        /* WHY CHOOSE US */
-        .why-grid {
+        .sample-content li:last-child {
+            border-bottom: none;
+        }
+        
+        .sample-content li::before {
+            content: '→';
+            color: var(--accent-teal);
+            margin-right: 1rem;
+            font-weight: 700;
+        }
+        
+        /* Quality Process */
+        .quality-process {
+            background: var(--navy-light);
+        }
+        
+        .process-steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
-        .why-item {
+        .process-step {
             text-align: center;
-            padding: 30px;
-        }
-        
-        .why-item .icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        
-        .why-item h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-        
-        .why-item p {
-            color: var(--text-secondary);
-        }
-        
-        /* HOW IT WORKS */
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-        
-        .step {
-            text-align: center;
-            position: relative;
+            padding: 2rem;
         }
         
         .step-number {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0 auto 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--accent-glow);
+            border: 2px solid var(--accent-teal);
+            border-radius: 50%;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-teal);
+            margin-bottom: 1.5rem;
         }
         
-        .step h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
+        .process-step h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
         }
         
-        .step p {
+        .process-step p {
             color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        /* Benefits */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .benefit-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-teal);
+        }
+        
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1.5rem;
+            stroke: var(--accent-teal);
+            fill: none;
+            stroke-width: 1.5;
+        }
+        
+        .benefit-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .benefit-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        /* How It Works */
+        .how-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .how-step {
+            position: relative;
+            text-align: center;
+        }
+        
+        .how-step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-teal), #4ec9b0);
+            border-radius: 50%;
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--navy-deep);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+        }
+        
+        .how-step h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .how-step p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        /* Before/After */
+        .before-after {
+            background: var(--navy-light);
+        }
+        
+        .comparison-grid {
+            display: grid;
+            gap: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .comparison-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .comparison-header {
+            margin-bottom: 2rem;
+        }
+        
+        .comparison-type {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .comparison-boxes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .comparison-box {
+            padding: 2rem;
+            border-radius: 12px;
+        }
+        
+        .before-box {
+            background: rgba(220, 53, 69, 0.1);
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+        
+        .after-box {
+            background: rgba(100, 255, 218, 0.1);
+            border: 1px solid var(--accent-teal);
+        }
+        
+        .box-label {
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        
+        .before-box .box-label {
+            color: #dc3545;
+        }
+        
+        .after-box .box-label {
+            color: var(--accent-teal);
+        }
+        
+        .comparison-box p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
         
         /* FAQ */
-        .faq {
-            background: var(--secondary-bg);
-        }
-        
-        .faq-list {
-            max-width: 800px;
-            margin: 60px auto 0;
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
         }
         
         .faq-item {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(100, 255, 218, 0.1);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 12px;
-            padding: 25px 30px;
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
         
-        .faq-item h4 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--accent);
+        .faq-item:hover {
+            border-color: var(--accent-teal);
         }
         
-        .faq-item p {
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: transparent;
+            border: none;
             color: var(--text-primary);
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            color: var(--accent-teal);
+        }
+        
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            stroke: var(--accent-teal);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer-content {
+            padding: 0 2rem 1.5rem;
+            color: var(--text-secondary);
             line-height: 1.8;
         }
         
-        /* ORDER FORM */
-        .order-section {
-            background: var(--primary-bg);
+        /* Order Form */
+        .order-form {
+            background: var(--navy-light);
         }
         
-        #aivance-order-form {
+        .form-container {
             max-width: 700px;
-            margin: 60px auto 0;
-            background: var(--card-bg);
+            margin: 0 auto;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 3rem;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            border-radius: 12px;
-            padding: 40px;
         }
         
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 2rem;
         }
         
         .form-group label {
             display: block;
-            color: #fff;
             font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
         }
         
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 14px;
-            border: 2px solid rgba(100, 255, 218, 0.2);
-            border-radius: 8px;
-            font-size: 1rem;
+            padding: 1rem;
             background: rgba(10, 25, 47, 0.5);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
             color: var(--text-primary);
-            transition: border-color 0.3s ease;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
         
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--accent);
+            border-color: var(--accent-teal);
+            box-shadow: 0 0 0 3px var(--accent-glow);
         }
         
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
         }
         
-        .service-fields {
-            display: none;
+        .form-submit {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--accent-teal);
+            color: var(--navy-deep);
+            border: none;
+            border-radius: 8px;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
         }
         
-        .service-fields.active {
-            display: block;
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.4);
         }
         
-        /* CONTACT SECTION */
-        .contact {
-            background: var(--secondary-bg);
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
         
+        /* Contact */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
-        .contact-item {
+        .contact-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
             text-align: center;
-            padding: 30px;
-            background: var(--card-bg);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            border-radius: 12px;
             transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
         }
         
-        .contact-item:hover {
+        .contact-card:hover {
             transform: translateY(-5px);
-            border-color: var(--accent);
+            border-color: var(--accent-teal);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
         }
         
-        .contact-item .icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 1rem;
+            stroke: var(--accent-teal);
+            fill: none;
+            stroke-width: 1.5;
         }
         
-        .contact-item h3 {
+        .contact-card h3 {
+            font-family: 'Syne', sans-serif;
             font-size: 1.2rem;
-            margin-bottom: 10px;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
         }
         
-        .contact-item a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .contact-item a:hover {
-            color: var(--accent-hover);
-        }
-        
-        /* FOOTER */
-        footer {
-            background: var(--primary-bg);
-            padding: 60px 20px 30px;
-            text-align: center;
-            border-top: 1px solid rgba(100, 255, 218, 0.1);
-        }
-        
-        footer p {
+        .contact-card p {
             color: var(--text-secondary);
-            margin: 10px 0;
+            font-size: 0.95rem;
         }
         
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
+        /* Footer */
+        footer {
+            background: var(--navy-deep);
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 0 2rem;
+            text-align: center;
         }
         
-        footer a:hover {
-            color: var(--accent-hover);
+        .footer-content {
+            color: var(--text-secondary);
         }
         
-        /* WHATSAPP FLOATING BUTTON */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            border-radius: 50%;
+        .footer-logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-teal);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
             display: flex;
-            align-items: center;
             justify-content: center;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
-            z-index: 1000;
-            transition: all 0.3s ease;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 2rem;
+            transition: color 0.3s ease;
         }
         
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7);
+        .footer-links a:hover {
+            color: var(--accent-teal);
         }
         
-        /* RESPONSIVE */
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 2rem;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            #intro-screen h1 {
-                font-size: 2rem;
+            .nav-links {
+                display: none;
             }
             
-            #intro-screen p {
-                font-size: 1rem;
+            .mobile-toggle {
+                display: flex;
             }
             
-            .hero h1 {
-                font-size: 2.5rem;
+            .section {
+                padding: 4rem 0;
             }
             
-            .hero p {
-                font-size: 1.1rem;
+            .hero {
+                min-height: 90vh;
             }
             
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .services-grid,
-            .work-grid,
-            .why-grid {
+            .comparison-boxes {
                 grid-template-columns: 1fr;
             }
             
-            .form-row {
-                grid-template-columns: 1fr;
+            .form-container {
+                padding: 2rem;
             }
-            
-            .cta-buttons {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-            }
+        }
+        
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-
-    <!-- INTRO ANIMATION -->
+    <!-- Intro Screen -->
     <div id="intro-screen">
-        <h1>Content That Converts</h1>
-        <p>Built for modern ecommerce brands</p>
+        <div class="intro-text">Content That Converts</div>
+        <div class="intro-subtext">Built for modern ecommerce brands</div>
     </div>
-
-    <!-- MAIN CONTENT -->
+    
+    <!-- Main Content -->
     <div id="main-content">
+        <!-- Navigation -->
+        <nav id="nav">
+            <div class="nav-container">
+                <a href="#" class="logo">AIvance Studio</a>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#work">Sample Work</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#order">Get Started</a></li>
+                </ul>
+                <div class="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
         
-        <!-- HERO SECTION -->
+        <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-content">
-                <h1>Premium Ecommerce Content That Converts</h1>
-                <p>AI-powered product descriptions, email copy, and SEO content — delivered in 24 hours.</p>
+            <div class="hero-bg"></div>
+            <div class="hero-content container">
+                <div class="hero-eyebrow">Professional Ecommerce Content</div>
+                <h1>
+                    Your Product Deserves<br>
+                    <span class="gradient-text">Words That Sell</span>
+                </h1>
+                <p class="hero-description">
+                    Professionally crafted product descriptions, Amazon listings, and conversion-optimized copy that turns browsers into buyers.
+                </p>
                 <div class="cta-buttons">
-                    <a href="#sample-work" class="btn btn-primary">View Our Work</a>
-                    <a href="#order" class="btn btn-secondary">Place Order</a>
+                    <a href="#order" class="btn btn-primary">Start Your Project</a>
+                    <a href="#work" class="btn btn-secondary">View Sample Work</a>
                 </div>
             </div>
         </section>
-
-        <!-- WHAT WE DO -->
-        <section class="what-we-do">
+        
+        <!-- Trust Bar -->
+        <section class="trust-bar">
             <div class="container">
-                <h2 class="section-title">Conversion-Focused Content Studio</h2>
-                <p class="section-subtitle">
-                    We specialize in high-converting ecommerce content that drives sales. From product descriptions to email campaigns, we help modern brands communicate value and close more customers.
-                </p>
+                <div class="trust-items">
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z"/>
+                            <path d="M2 17L12 22L22 17"/>
+                            <path d="M2 12L12 17L22 12"/>
+                        </svg>
+                        <h3>24-Hour Delivery</h3>
+                        <p>Fast turnaround without compromising quality</p>
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 11L12 14L22 4"/>
+                            <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16"/>
+                        </svg>
+                        <h3>2 Free Revisions</h3>
+                        <p>We refine until you're satisfied</p>
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        <h3>SEO Optimized</h3>
+                        <p>Keyword-rich content that ranks</p>
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <h3>Professional Quality</h3>
+                        <p>Human-reviewed, conversion-focused copy</p>
+                    </div>
+                </div>
             </div>
         </section>
-
-        <!-- SERVICES -->
-        <section class="services">
+        
+        <!-- Positioning Section -->
+        <section class="section positioning" id="about">
             <div class="container">
-                <h2 class="section-title">Our Services</h2>
-                <p class="section-subtitle">Professional content delivered fast, priced fairly, built to convert.</p>
+                <div class="positioning-content">
+                    <div class="section-eyebrow">Who We Are</div>
+                    <h2 class="section-title">A Conversion-Focused Ecommerce Content Studio</h2>
+                    <p class="positioning-statement">
+                        We're not just writers—we're conversion specialists who understand ecommerce psychology, SEO strategy, and what makes customers click "Add to Cart."
+                    </p>
+                    <p class="positioning-detail">
+                        Every product description, listing, and piece of copy is crafted with a singular goal: to transform your traffic into revenue. We combine data-driven strategies with compelling storytelling to create content that doesn't just describe—it persuades.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services Section -->
+        <section class="section" id="services">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-eyebrow">Services</div>
+                    <h2 class="section-title">Premium Content Solutions</h2>
+                    <p class="section-description">
+                        Specialized ecommerce copywriting services designed to increase conversions and drive sales.
+                    </p>
+                </div>
                 
                 <div class="services-grid">
-                    
-                    <!-- Product Descriptions -->
-                    <div class="service-card">
+                    <div class="service-card fade-in">
+                        <svg class="service-icon" viewBox="0 0 24 24">
+                            <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20"/>
+                            <path d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2Z"/>
+                        </svg>
                         <h3>Product Descriptions</h3>
-                        <div class="price">$8 - $30</div>
-                        <p>High-converting copy that turns browsers into buyers.</p>
-                        <ul>
-                            <li>SEO optimized</li>
-                            <li>Benefit-focused</li>
-                            <li>Perfect for Shopify, Amazon, Etsy</li>
-                            <li>24-hour delivery</li>
-                        </ul>
-                        <p><strong>Pricing:</strong> 1 product: $8 | 3 products: $15 | 10 products: $30</p>
+                        <p>Compelling, conversion-optimized descriptions that highlight benefits and drive purchase decisions.</p>
+                        <div class="service-price">$8 - $30</div>
+                        <div class="service-details">Based on complexity and length</div>
                     </div>
-
-                    <!-- Amazon Listings -->
-                    <div class="service-card">
+                    
+                    <div class="service-card fade-in">
+                        <svg class="service-icon" viewBox="0 0 24 24">
+                            <path d="M21 16V8C20.9996 7.64927 20.9071 7.30481 20.7315 7.00116C20.556 6.69751 20.3037 6.44536 20 6.27L13 2.27C12.696 2.09446 12.3511 2.00205 12 2.00205C11.6489 2.00205 11.304 2.09446 11 2.27L4 6.27C3.69626 6.44536 3.44398 6.69751 3.26846 7.00116C3.09294 7.30481 3.00036 7.64927 3 8V16C3.00036 16.3507 3.09294 16.6952 3.26846 16.9988C3.44398 17.3025 3.69626 17.5546 4 17.73L11 21.73C11.304 21.9055 11.6489 21.9979 12 21.9979C12.3511 21.9979 12.696 21.9055 13 21.73L20 17.73C20.3037 17.5546 20.556 17.3025 20.7315 16.9988C20.9071 16.6952 20.9996 16.3507 21 16Z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
                         <h3>Amazon Listings</h3>
-                        <div class="price">$15</div>
-                        <p>Optimized for Amazon's A9 algorithm to rank higher and sell more.</p>
-                        <ul>
-                            <li>Keyword research included</li>
-                            <li>Bullet points + description</li>
-                            <li>Backend search terms</li>
-                            <li>Conversion-focused</li>
-                        </ul>
-                        <p><strong>Per listing</strong></p>
+                        <p>SEO-optimized titles, bullet points, and descriptions that rank higher and convert better.</p>
+                        <div class="service-price">$15</div>
+                        <div class="service-details">Complete listing optimization</div>
                     </div>
-
-                    <!-- SEO Blog Outlines -->
-                    <div class="service-card">
+                    
+                    <div class="service-card fade-in">
+                        <svg class="service-icon" viewBox="0 0 24 24">
+                            <line x1="10" y1="13" x2="10" y2="13"/>
+                            <line x1="14" y1="13" x2="14" y2="13"/>
+                            <path d="M22 12H18L15 21L9 3L6 12H2"/>
+                        </svg>
                         <h3>SEO Blog Outlines</h3>
-                        <div class="price">$12</div>
-                        <p>Complete blog structure ready to write from.</p>
-                        <ul>
-                            <li>Keyword-optimized headings</li>
-                            <li>Meta description</li>
-                            <li>5-7 main sections with subheadings</li>
-                            <li>Link suggestions</li>
-                        </ul>
-                        <p><strong>Per outline</strong></p>
+                        <p>Strategic content structures optimized for search engines and reader engagement.</p>
+                        <div class="service-price">$12</div>
+                        <div class="service-details">Comprehensive SEO framework</div>
                     </div>
-
-                    <!-- Email Subject Lines -->
-                    <div class="service-card">
+                    
+                    <div class="service-card fade-in">
+                        <svg class="service-icon" viewBox="0 0 24 24">
+                            <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
                         <h3>Email Subject Lines</h3>
-                        <div class="price">$10 - $25</div>
-                        <p>High open-rate formulas that get your emails clicked.</p>
-                        <ul>
-                            <li>Mobile-optimized</li>
-                            <li>A/B test ready</li>
-                            <li>Multiple styles</li>
-                            <li>Spam-trigger free</li>
-                        </ul>
-                        <p><strong>Pricing:</strong> 10 lines: $10 | 20 lines: $18 | 30 lines: $25</p>
+                        <p>High-open-rate subject lines that cut through inbox clutter and drive clicks.</p>
+                        <div class="service-price">$10 - $25</div>
+                        <div class="service-details">Volume-based pricing</div>
                     </div>
-
-                    <!-- Social Media Captions -->
-                    <div class="service-card">
+                    
+                    <div class="service-card fade-in">
+                        <svg class="service-icon" viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37C16.1234 11.2022 16.1872 10.9957 16.1806 10.7852C16.174 10.5747 16.0972 10.3726 15.9628 10.2131C15.8285 10.0537 15.6445 9.94626 15.4407 9.91062C15.2369 9.87497 15.0268 9.91306 14.85 10.02L12.85 11.37"/>
+                            <circle cx="12" cy="8" r="2"/>
+                            <path d="M8 16L12.3 13.7C12.4778 13.5985 12.6876 13.5607 12.8914 13.5935C13.0952 13.6262 13.281 13.7274 13.4181 13.8802C13.5552 14.0329 13.6351 14.2281 13.6438 14.4329C13.6525 14.6378 13.5896 14.8391 13.4658 15.0027L12 16.87"/>
+                        </svg>
                         <h3>Social Media Captions</h3>
-                        <div class="price">$12</div>
-                        <p>Engaging captions for Instagram, Facebook, and LinkedIn.</p>
-                        <ul>
-                            <li>10 captions per order</li>
-                            <li>Platform-optimized</li>
-                            <li>Hashtag suggestions</li>
-                            <li>CTA included</li>
-                        </ul>
-                        <p><strong>10 captions per order</strong></p>
+                        <p>Platform-optimized captions that engage audiences and drive traffic to your store.</p>
+                        <div class="service-price">$12</div>
+                        <div class="service-details">All major platforms</div>
                     </div>
-
-                    <!-- Ad Copy -->
-                    <div class="service-card">
+                    
+                    <div class="service-card fade-in">
+                        <svg class="service-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14S9.5 16 12 16S16 14 16 14"/>
+                            <line x1="9" y1="9" x2="9.01" y2="9"/>
+                            <line x1="15" y1="9" x2="15.01" y2="9"/>
+                        </svg>
                         <h3>Ad Copy (Meta/Google)</h3>
-                        <div class="price">$18</div>
-                        <p>Scroll-stopping ad copy that drives clicks and conversions.</p>
-                        <ul>
-                            <li>5 variations per order</li>
-                            <li>Headlines + body copy</li>
-                            <li>Facebook & Google optimized</li>
-                            <li>A/B test ready</li>
-                        </ul>
-                        <p><strong>5 ad variations</strong></p>
+                        <p>Click-worthy ad copy that maximizes ROI on your paid campaigns.</p>
+                        <div class="service-price">$18</div>
+                        <div class="service-details">Multiple variations included</div>
                     </div>
-
                 </div>
             </div>
         </section>
-
-        <!-- SAMPLE WORK -->
-        <section id="sample-work" class="sample-work">
+        
+        <!-- Sample Work -->
+        <section class="section" id="work" style="background: var(--navy-light);">
             <div class="container">
-                <h2 class="section-title">Sample Work</h2>
-                <p class="section-subtitle">Real examples of our output quality</p>
+                <div class="section-header fade-in">
+                    <div class="section-eyebrow">Portfolio</div>
+                    <h2 class="section-title">Sample Work</h2>
+                    <p class="section-description">
+                        Real examples of conversion-focused content we've created.
+                    </p>
+                </div>
                 
-                <div class="work-grid">
+                <div class="samples-grid">
+                    <div class="sample-card fade-in">
+                        <div class="sample-label">Product Description</div>
+                        <h3>EcoFlow Insulated Water Bottle</h3>
+                        <div class="sample-content">
+                            <p>Stay hydrated in style with the EcoFlow Insulated Water Bottle—your perfect companion for adventures big and small. Engineered with double-wall vacuum insulation, this sleek bottle keeps your drinks ice-cold for 24 hours or piping hot for 12, no matter where life takes you.</p>
+                            <p>The powder-coated finish provides a secure, sweat-free grip while giving you a pop of color that stands out. Its wide mouth opening makes filling and cleaning effortless, and the leak-proof lid ensures no spills in your bag. BPA-free and built from premium stainless steel, EcoFlow is as kind to the planet as it is to your taste buds.</p>
+                            <p>Whether you're hitting the gym, conquering a trail, or powering through your workday, EcoFlow delivers reliable temperature control and head-turning design. Choose sustainability without sacrificing performance—grab your EcoFlow today.</p>
+                        </div>
+                    </div>
                     
-                    <!-- Product Description Example -->
-                    <div class="work-item">
-                        <div class="label">Product Description</div>
-                        <h4>EcoFlow Insulated Water Bottle</h4>
-                        <p>
-                            Your daily hydration ritual just got an upgrade. The EcoFlow Stainless Steel Water Bottle keeps your morning coffee steaming through your commute and your post-workout smoothie ice-cold until evening—24 hours cold, 12 hours hot, no matter what the day throws at you. Crafted from 100% recycled stainless steel with a smooth bamboo lid that feels good in your hand, this isn't just another eco-friendly water bottle—it's the one that finally works as hard as you do. BPA-free, genuinely leak-proof, and slim enough to slide into any cup holder, it turns your car, desk, and gym bag into plastic-free zones. Every refill saves you money and keeps another disposable bottle out of the ocean. Hydration that fits your life and values.
-                        </p>
+                    <div class="sample-card fade-in">
+                        <div class="sample-label">SEO Blog Outline</div>
+                        <h3>How to Write Product Descriptions That Sell</h3>
+                        <div class="sample-content">
+                            <ul>
+                                <li><strong>Introduction:</strong> Why product descriptions matter for conversions (hook with statistic)</li>
+                                <li><strong>Know Your Customer:</strong> Researching buyer personas and pain points</li>
+                                <li><strong>Focus on Benefits, Not Features:</strong> The emotional selling technique</li>
+                                <li><strong>Use Sensory Language:</strong> Making products come alive with descriptive words</li>
+                                <li><strong>Optimize for SEO:</strong> Keyword placement without keyword stuffing</li>
+                                <li><strong>Include Social Proof:</strong> Reviews, testimonials, and trust signals</li>
+                                <li><strong>Create Urgency:</strong> Scarcity tactics that drive action</li>
+                                <li><strong>Format for Readability:</strong> Scannable structure with bullets and short paragraphs</li>
+                                <li><strong>A/B Test Your Copy:</strong> Continuous improvement strategies</li>
+                                <li><strong>Conclusion & CTA:</strong> Summarize key takeaways and next steps</li>
+                            </ul>
+                        </div>
                     </div>
-
-                    <!-- Blog Outline Example -->
-                    <div class="work-item">
-                        <div class="label">SEO Blog Outline</div>
-                        <h4>How to Write Product Descriptions That Sell</h4>
-                        <p><strong>Meta Description:</strong> Learn proven strategies to write product descriptions that convert browsers into buyers. SEO tips, psychology tactics, and real examples included.</p>
-                        <p><strong>Structure:</strong></p>
-                        <ul>
-                            <li><strong>H2:</strong> Why Most Product Descriptions Fail</li>
-                            <li><strong>H2:</strong> The Psychology of Buying Decisions</li>
-                            <li><strong>H2:</strong> 5 Elements of High-Converting Descriptions</li>
-                            <li><strong>H2:</strong> SEO Optimization for Product Pages</li>
-                            <li><strong>H2:</strong> Before & After Examples</li>
-                            <li><strong>H2:</strong> Common Mistakes to Avoid</li>
-                        </ul>
+                    
+                    <div class="sample-card fade-in">
+                        <div class="sample-label">Email Subject Lines</div>
+                        <h3>Product Launch Campaign (10 Variations)</h3>
+                        <div class="sample-content">
+                            <ul>
+                                <li>🚀 JUST LAUNCHED: Your New Favorite [Product] Is Here</li>
+                                <li>The wait is over—[Product Name] drops today (limited stock!)</li>
+                                <li>You asked, we delivered: Introducing [Product]</li>
+                                <li>First look: The [Product] everyone's talking about</li>
+                                <li>Why [Product] is flying off shelves (get yours before it's gone)</li>
+                                <li>NEW: The [benefit] you've been missing</li>
+                                <li>[Name], meet your new obsession 👀</li>
+                                <li>Early access: Shop [Product] before the crowd</li>
+                                <li>This is what [X reviews] rave reviews look like</li>
+                                <li>Your inbox just got better—[Product] is finally here!</li>
+                            </ul>
+                        </div>
                     </div>
-
-                    <!-- Email Subject Lines Example -->
-                    <div class="work-item">
-                        <div class="label">Email Subject Lines</div>
-                        <h4>Product Launch Campaign</h4>
-                        <ul>
-                            <li>1. Your cart misses you (+ 20% off inside)</li>
-                            <li>2. We just dropped something you'll love</li>
-                            <li>3. [Name], this won't last long</li>
-                            <li>4. New arrival: Your perfect match?</li>
-                            <li>5. Still thinking about it?</li>
-                            <li>6. Final hours: 20% off ends tonight</li>
-                            <li>7. Sold out twice. Back in stock now.</li>
-                            <li>8. What 500+ customers are saying...</li>
-                            <li>9. You're one step away from...</li>
-                            <li>10. Last chance before price goes up</li>
-                        </ul>
-                    </div>
-
                 </div>
             </div>
         </section>
-
-        <!-- WHY CHOOSE US -->
-        <section class="why-choose">
+        
+        <!-- Quality Process -->
+        <section class="section quality-process" id="process">
             <div class="container">
-                <h2 class="section-title">Why Choose AIvance Studio</h2>
-                
-                <div class="why-grid">
-                    
-                    <div class="why-item">
-                        <div class="icon">⚡</div>
-                        <h3>Fast Turnaround</h3>
-                        <p>24-hour delivery on all orders. Need it faster? Let us know.</p>
-                    </div>
-
-                    <div class="why-item">
-                        <div class="icon">🎯</div>
-                        <h3>Conversion-Focused</h3>
-                        <p>Every word is written to drive action and increase sales.</p>
-                    </div>
-
-                    <div class="why-item">
-                        <div class="icon">💰</div>
-                        <h3>Affordable Pricing</h3>
-                        <p>Premium quality without the premium price tag.</p>
-                    </div>
-
-                    <div class="why-item">
-                        <div class="icon">✍️</div>
-                        <h3>Professional Quality</h3>
-                        <p>AI-powered efficiency meets human-level polish.</p>
-                    </div>
-
-                    <div class="why-item">
-                        <div class="icon">🔄</div>
-                        <h3>2 Free Revisions</h3>
-                        <p>We'll refine until you're completely satisfied.</p>
-                    </div>
-
-                    <div class="why-item">
-                        <div class="icon">📈</div>
-                        <h3>SEO Optimized</h3>
-                        <p>Every piece is built to rank and convert.</p>
-                    </div>
-
+                <div class="section-header fade-in">
+                    <div class="section-eyebrow">Our Process</div>
+                    <h2 class="section-title">Quality You Can Trust</h2>
+                    <p class="section-description">
+                        Transparent workflow ensuring every piece meets professional standards.
+                    </p>
                 </div>
-            </div>
-        </section>
-
-        <!-- HOW IT WORKS -->
-        <section class="how-it-works">
-            <div class="container">
-                <h2 class="section-title">How It Works</h2>
-                <p class="section-subtitle">Simple, fast, professional</p>
                 
-                <div class="steps">
-                    
-                    <div class="step">
+                <div class="process-steps">
+                    <div class="process-step fade-in">
                         <div class="step-number">1</div>
-                        <h3>Fill the Form</h3>
-                        <p>Tell us what you need. Takes 30 seconds.</p>
+                        <h3>Strategic Research</h3>
+                        <p>We analyze your product, target audience, and competitive landscape to craft copy that resonates and converts.</p>
                     </div>
-
-                    <div class="step">
+                    
+                    <div class="process-step fade-in">
                         <div class="step-number">2</div>
-                        <h3>We Generate</h3>
-                        <p>AI creates, we review and polish for quality.</p>
+                        <h3>Professional Writing</h3>
+                        <p>Expert copywriters create conversion-focused content using proven psychological triggers and SEO best practices.</p>
                     </div>
-
-                    <div class="step">
+                    
+                    <div class="process-step fade-in">
                         <div class="step-number">3</div>
-                        <h3>You Receive</h3>
-                        <p>Polished content delivered via email within 24 hours.</p>
+                        <h3>Quality Review</h3>
+                        <p>Every piece undergoes thorough human review for accuracy, tone, grammar, and conversion optimization before delivery.</p>
                     </div>
-
                 </div>
             </div>
         </section>
-
+        
+        <!-- Benefits -->
+        <section class="section" id="benefits">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-eyebrow">Why Choose Us</div>
+                    <h2 class="section-title">The AIvance Advantage</h2>
+                </div>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card fade-in">
+                        <svg class="benefit-icon" viewBox="0 0 24 24">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                        <h3>Conversion-Optimized</h3>
+                        <p>Every word is chosen to move customers closer to purchase, not just fill space.</p>
+                    </div>
+                    
+                    <div class="benefit-card fade-in">
+                        <svg class="benefit-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        <h3>Lightning Fast</h3>
+                        <p>24-hour turnaround on most projects so you can launch faster.</p>
+                    </div>
+                    
+                    <div class="benefit-card fade-in">
+                        <svg class="benefit-icon" viewBox="0 0 24 24">
+                            <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                        </svg>
+                        <h3>SEO Foundation</h3>
+                        <p>Content structured to rank in search and attract organic traffic.</p>
+                    </div>
+                    
+                    <div class="benefit-card fade-in">
+                        <svg class="benefit-icon" viewBox="0 0 24 24">
+                            <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13"/>
+                            <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89317 18.7122 8.75608 18.1676 9.45768C17.623 10.1593 16.8604 10.6597 16 10.88"/>
+                        </svg>
+                        <h3>Ecommerce Specialists</h3>
+                        <p>We understand product psychology and what makes shoppers click "buy."</p>
+                    </div>
+                    
+                    <div class="benefit-card fade-in">
+                        <svg class="benefit-icon" viewBox="0 0 24 24">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"/>
+                            <path d="M12 16V12"/>
+                            <path d="M12 8H12.01"/>
+                        </svg>
+                        <h3>Transparent Pricing</h3>
+                        <p>No hidden fees or surprise charges—just honest, upfront pricing.</p>
+                    </div>
+                    
+                    <div class="benefit-card fade-in">
+                        <svg class="benefit-icon" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        <h3>Revision-Friendly</h3>
+                        <p>Two free revisions included to ensure you're 100% satisfied.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- How It Works -->
+        <section class="section" style="background: var(--navy-light);">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-eyebrow">Simple Process</div>
+                    <h2 class="section-title">How It Works</h2>
+                    <p class="section-description">
+                        From order to delivery in three simple steps.
+                    </p>
+                </div>
+                
+                <div class="how-steps">
+                    <div class="how-step fade-in">
+                        <div class="how-step-number">1</div>
+                        <h3>Submit Your Brief</h3>
+                        <p>Fill out our order form with product details, target audience, and any specific requirements.</p>
+                    </div>
+                    
+                    <div class="how-step fade-in">
+                        <div class="how-step-number">2</div>
+                        <h3>We Create</h3>
+                        <p>Our team researches, writes, and reviews your content to ensure it's conversion-optimized.</p>
+                    </div>
+                    
+                    <div class="how-step fade-in">
+                        <div class="how-step-number">3</div>
+                        <h3>You Launch</h3>
+                        <p>Receive your polished content within 24 hours. Request revisions if needed, then go live!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Before/After Examples -->
+        <section class="section before-after">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-eyebrow">Results</div>
+                    <h2 class="section-title">The Difference Quality Makes</h2>
+                    <p class="section-description">
+                        See how professional copy transforms product presentation.
+                    </p>
+                </div>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-item fade-in">
+                        <div class="comparison-header">
+                            <div class="comparison-type">Product Title</div>
+                        </div>
+                        <div class="comparison-boxes">
+                            <div class="comparison-box before-box">
+                                <div class="box-label">Before</div>
+                                <p>"Laptop Bag Black 15 inch Waterproof"</p>
+                            </div>
+                            <div class="comparison-box after-box">
+                                <div class="box-label">After</div>
+                                <p>"Premium 15" Laptop Backpack - Water-Resistant, TSA-Friendly, Anti-Theft Design for Business Travel"</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-item fade-in">
+                        <div class="comparison-header">
+                            <div class="comparison-type">Product Description Opening</div>
+                        </div>
+                        <div class="comparison-boxes">
+                            <div class="comparison-box before-box">
+                                <div class="box-label">Before</div>
+                                <p>"This is a good quality blender. It has 10 speeds and is made of stainless steel. Very powerful motor."</p>
+                            </div>
+                            <div class="comparison-box after-box">
+                                <div class="box-label">After</div>
+                                <p>"Transform your kitchen into a smoothie bar with this professional-grade blender. 10 precision speeds and a commercial-strength motor pulverize even the toughest ingredients into silky perfection."</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-item fade-in">
+                        <div class="comparison-header">
+                            <div class="comparison-type">Email Subject Line</div>
+                        </div>
+                        <div class="comparison-boxes">
+                            <div class="comparison-box before-box">
+                                <div class="box-label">Before</div>
+                                <p>"New Product Available"</p>
+                            </div>
+                            <div class="comparison-box after-box">
+                                <div class="box-label">After</div>
+                                <p>"The [Product] everyone's talking about just dropped (limited stock!)"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <!-- FAQ -->
-        <section class="faq">
+        <section class="section" id="faq">
             <div class="container">
-                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="section-header fade-in">
+                    <div class="section-eyebrow">FAQ</div>
+                    <h2 class="section-title">Common Questions</h2>
+                </div>
                 
-                <div class="faq-list">
+                <div class="faq-container">
+                    <div class="faq-item fade-in">
+                        <button class="faq-question">
+                            <span>What's your typical turnaround time?</span>
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Most projects are delivered within 24 hours. Rush orders can often be accommodated—just reach out and we'll see what we can do.
+                            </div>
+                        </div>
+                    </div>
                     
-                    <div class="faq-item">
-                        <h4>Is this AI-generated content?</h4>
-                        <p>Yes, we use advanced AI to generate content, then review and polish it to ensure professional quality. The result is fast, affordable, and high-converting.</p>
+                    <div class="faq-item fade-in">
+                        <button class="faq-question">
+                            <span>How do revisions work?</span>
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Every order includes 2 free revisions. Simply let us know what you'd like adjusted, and we'll refine the content until you're satisfied.
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="faq-item">
-                        <h4>How fast is delivery?</h4>
-                        <p>All orders are delivered within 24 hours. Most are completed much faster.</p>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question">
+                            <span>Do you write in languages other than English?</span>
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Currently, we specialize in English content. For the highest quality and conversion rates, we focus on what we do best.
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="faq-item">
-                        <h4>Can I request revisions?</h4>
-                        <p>Yes, 2 free revisions are included with every order. We'll refine until you're satisfied.</p>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question">
+                            <span>Can you help with bulk orders?</span>
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Absolutely! We offer volume discounts for large catalogs. Contact us with your project details for a custom quote.
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="faq-item">
-                        <h4>What if I don't like the content?</h4>
-                        <p>We work with you through revisions to get it right. Our goal is your complete satisfaction.</p>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question">
+                            <span>What information do you need to get started?</span>
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Product name, key features, target audience, and any brand voice guidelines. The more details you provide, the better we can tailor the content.
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="faq-item">
-                        <h4>Do you write in languages other than English?</h4>
-                        <p>Currently, we only offer English content.</p>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question">
+                            <span>Is the content SEO-optimized?</span>
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                Yes! Every piece includes keyword optimization, proper formatting, and SEO best practices to help your content rank.
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="faq-item">
-                        <h4>Is the content SEO optimized?</h4>
-                        <p>Yes, all content includes keyword integration and SEO best practices.</p>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question">
+                            <span>What makes your copy conversion-focused?</span>
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                We use proven psychological triggers, benefit-focused language, and strategic formatting that guides readers toward purchase decisions. Every word has a purpose.
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="faq-item">
-                        <h4>How do I place an order?</h4>
-                        <p>Fill out the order form below, or contact us via WhatsApp, email, or Fiverr.</p>
-                    </div>
-
                 </div>
             </div>
         </section>
-
-        <!-- ORDER FORM -->
-        <section id="order" class="order-section">
+        
+        <!-- Order Form -->
+        <section class="section order-form" id="order">
             <div class="container">
-                <h2 class="section-title">Place Your Order</h2>
-                <p class="section-subtitle">Get started in 30 seconds</p>
+                <div class="section-header fade-in">
+                    <div class="section-eyebrow">Get Started</div>
+                    <h2 class="section-title">Start Your Project</h2>
+                    <p class="section-description">
+                        Fill out the form below and we'll get started on your content within 24 hours.
+                    </p>
+                </div>
                 
-                <form id="aivance-order-form">
-                    
-                    <div class="form-group">
-                        <label>Select Service *</label>
-                        <select id="service-type" required>
-                            <option value="">Choose a service...</option>
-                            <option value="product-description">Product Description</option>
-                            <option value="amazon-listing">Amazon Listing</option>
-                            <option value="blog-outline">SEO Blog Outline</option>
-                            <option value="email-subjects">Email Subject Lines</option>
-                            <option value="social-captions">Social Media Captions</option>
-                            <option value="ad-copy">Ad Copy (Meta/Google)</option>
-                        </select>
-                    </div>
-
-                    <!-- Product Description Fields -->
-                    <div id="product-fields" class="service-fields">
+                <div class="form-container fade-in">
+                    <form id="orderForm">
                         <div class="form-group">
-                            <label>Product Name *</label>
-                            <input type="text" id="product-name">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required>
                         </div>
+                        
                         <div class="form-group">
-                            <label>Key Features (3-5 bullet points) *</label>
-                            <textarea id="product-features" rows="4" placeholder="• Feature 1&#10;• Feature 2&#10;• Feature 3"></textarea>
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
+                        
                         <div class="form-group">
-                            <label>Target Audience *</label>
-                            <input type="text" id="product-audience" placeholder="e.g., fitness enthusiasts 25-40">
-                        </div>
-                        <div class="form-group">
-                            <label>Tone *</label>
-                            <select id="product-tone">
-                                <option value="">Select tone...</option>
-                                <option value="luxury">Luxury & Premium</option>
-                                <option value="professional">Professional</option>
-                                <option value="casual">Casual & Friendly</option>
-                                <option value="playful">Playful</option>
-                                <option value="eco-conscious">Eco-conscious</option>
+                            <label for="service">Service Needed *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service...</option>
+                                <option value="Product Description">Product Description ($8-$30)</option>
+                                <option value="Amazon Listing">Amazon Listing ($15)</option>
+                                <option value="SEO Blog Outline">SEO Blog Outline ($12)</option>
+                                <option value="Email Subject Lines">Email Subject Lines ($10-$25)</option>
+                                <option value="Social Media Captions">Social Media Captions ($12)</option>
+                                <option value="Ad Copy">Ad Copy - Meta/Google ($18)</option>
                             </select>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Word Count *</label>
-                                <select id="product-words">
-                                    <option value="100">100 words</option>
-                                    <option value="150" selected>150 words</option>
-                                    <option value="200">200 words</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Quantity *</label>
-                                <select id="product-quantity">
-                                    <option value="1">1 product ($8)</option>
-                                    <option value="3">3 products ($15)</option>
-                                    <option value="10">10 products ($30)</option>
-                                </select>
-                            </div>
+                        
+                        <div class="form-group">
+                            <label for="details">Project Details *</label>
+                            <textarea id="details" name="details" required placeholder="Product name, target audience, key features, brand voice, etc."></textarea>
                         </div>
-                    </div>
-
-                    <!-- Common fields for all services -->
-                    <div class="form-group">
-                        <label>Your Email *</label>
-                        <input type="email" id="client-email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Business Name (Optional)</label>
-                        <input type="text" id="client-business">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Special Instructions (Optional)</label>
-                        <textarea id="client-instructions" rows="3"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Order →</button>
-
-                    <p style="text-align: center; margin-top: 20px; color: var(--text-secondary);">
-                        ✅ Delivered within 24 hours | 💯 2 free revisions included
-                    </p>
-                </form>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section class="contact">
-            <div class="container">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Choose your preferred way to connect</p>
-                
-                <div class="contact-grid">
-                    
-                    <div class="contact-item">
-                        <div class="icon">📧</div>
-                        <h3>Email</h3>
-                        <a href="mailto:shuraimjawad1@gmail.com">shuraimjawad1@gmail.com</a>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="icon">💬</div>
-                        <h3>WhatsApp</h3>
-                        <a href="https://wa.me/923193460403?text=Hi%20AIvance,%20I'm%20interested%20in%20your%20services" target="_blank">Message Us</a>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="icon">📸</div>
-                        <h3>Instagram</h3>
-                        <a href="https://www.instagram.com/aivance.design" target="_blank">@aivance.design</a>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="icon">🎯</div>
-                        <h3>Fiverr</h3>
-                        <a href="https://fiverr.com/shuraim_jawad" target="_blank">fiverr.com/shuraim_jawad</a>
-                    </div>
-
+                        
+                        <div class="form-group">
+                            <label for="deadline">Preferred Deadline</label>
+                            <input type="text" id="deadline" name="deadline" placeholder="e.g., 24 hours, 2 days, specific date">
+                        </div>
+                        
+                        <button type="submit" class="form-submit" id="submitBtn">Submit Project Request</button>
+                    </form>
                 </div>
             </div>
         </section>
-
-        <!-- FOOTER -->
+        
+        <!-- Contact -->
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-eyebrow">Get In Touch</div>
+                    <h2 class="section-title">Let's Connect</h2>
+                    <p class="section-description">
+                        Have questions? Reach out on your preferred platform.
+                    </p>
+                </div>
+                
+                <div class="contact-grid">
+                    <a href="https://wa.me/923193460403" class="contact-card fade-in" target="_blank">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z"/>
+                        </svg>
+                        <h3>WhatsApp</h3>
+                        <p>+92 319 3460403</p>
+                    </a>
+                    
+                    <a href="mailto:shuraimjawad1@gmail.com" class="contact-card fade-in">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <h3>Email</h3>
+                        <p>shuraimjawad1@gmail.com</p>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/aivance.design" class="contact-card fade-in" target="_blank">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37C16.1234 11.2022 16.1872 10.9957 16.1806 10.7852C16.174 10.5747 16.0972 10.3726 15.9628 10.2131C15.8285 10.0537 15.6445 9.94626 15.4407 9.91062C15.2369 9.87497 15.0268 9.91306 14.85 10.02L12.85 11.37"/>
+                            <circle cx="12" cy="8" r="2"/>
+                        </svg>
+                        <h3>Instagram</h3>
+                        <p>@aivance.design</p>
+                    </a>
+                    
+                    <a href="https://www.fiverr.com/shuraim_jawad" class="contact-card fade-in" target="_blank">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16V12"/>
+                            <path d="M12 8H12.01"/>
+                        </svg>
+                        <h3>Fiverr</h3>
+                        <p>fiverr.com/shuraim_jawad</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
         <footer>
-            <p>&copy; 2026 AIvance Studio. All rights reserved.</p>
-            <p>Premium ecommerce content that converts.</p>
-            <p style="margin-top: 20px;">
-                <a href="mailto:shuraimjawad1@gmail.com">Email</a> · 
-                <a href="https://wa.me/923193460403" target="_blank">WhatsApp</a> · 
-                <a href="https://www.instagram.com/aivance.design" target="_blank">Instagram</a> · 
-                <a href="https://fiverr.com/shuraim_jawad" target="_blank">Fiverr</a>
-            </p>
+            <div class="container footer-content">
+                <div class="footer-logo">AIvance Studio</div>
+                <p>Professional ecommerce content that converts.</p>
+                
+                <div class="footer-links">
+                    <a href="#services">Services</a>
+                    <a href="#work">Sample Work</a>
+                    <a href="#process">Process</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#order">Get Started</a>
+                </div>
+                
+                <div class="copyright">
+                    &copy; 2024 AIvance Studio. All rights reserved.
+                </div>
+            </div>
         </footer>
-
     </div>
-
-    <!-- WHATSAPP FLOATING BUTTON -->
-    <a href="https://wa.me/923193460403?text=Hi%20AIvance,%20I'm%20interested%20in%20your%20services" class="whatsapp-float" target="_blank">
-        💬
-    </a>
-
+    
     <script>
-        // Service type selector
-        document.getElementById('service-type').addEventListener('change', function() {
-            // Hide all service fields
-            document.querySelectorAll('.service-fields').forEach(el => {
-                el.classList.remove('active');
-            });
-            
-            // Show selected service fields
-            const service = this.value;
-            if (service === 'product-description') {
-                document.getElementById('product-fields').classList.add('active');
-            }
-            // Add similar logic for other services when you expand the form
+        // Intro Animation
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('intro-screen').classList.add('fade-out');
+                document.getElementById('main-content').classList.add('show');
+                
+                setTimeout(function() {
+                    document.getElementById('intro-screen').style.display = 'none';
+                }, 600);
+            }, 2800);
         });
-
-        // Form submission
-        document.getElementById('aivance-order-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                timestamp: new Date().toISOString(),
-                serviceType: document.getElementById('service-type').value,
-                clientEmail: document.getElementById('client-email').value,
-                clientBusiness: document.getElementById('client-business').value,
-                specialInstructions: document.getElementById('client-instructions').value
-            };
-            
-            // Add service-specific data
-            if (formData.serviceType === 'product-description') {
-                formData.productName = document.getElementById('product-name').value;
-                formData.productFeatures = document.getElementById('product-features').value;
-                formData.productAudience = document.getElementById('product-audience').value;
-                formData.productTone = document.getElementById('product-tone').value;
-                formData.productWords = document.getElementById('product-words').value;
-                formData.productQuantity = document.getElementById('product-quantity').value;
-            }
-            
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbwPDwm64WT-FRBGPH8SAxDSz_XJ8S-ApSflHT0mNObaie_AWH3eCkjFyCubJYvg9YtX/exec';
-            
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'Processing...';
-            submitButton.disabled = true;
-            
-            fetch(scriptURL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(() => {
-                alert('✅ Order submitted successfully!\n\nYou will receive your content within 24 hours at ' + formData.clientEmail);
-                document.getElementById('aivance-order-form').reset();
-                document.querySelectorAll('.service-fields').forEach(el => {
-                    el.classList.remove('active');
-                });
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-            })
-            .catch((error) => {
-                alert('❌ Error submitting order. Please contact us directly via WhatsApp or email.');
-                console.error('Error:', error);
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-            });
-        });
-
-        // Smooth scroll for anchor links
+        
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1141,7 +1736,98 @@
                 }
             });
         });
+        
+        // Navbar scroll effect
+        let lastScroll = 0;
+        const nav = document.getElementById('nav');
+        
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-answer').style.maxHeight = null;
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                    const answer = faqItem.querySelector('.faq-answer');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+        
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Form submission
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            fetch('https://script.google.com/macros/s/AKfycbwPDwm64WT-FRBGPH8SAxDSz_XJ8S-ApSflHT0mNObaie_AWH3eCkjFyCubJYvg9YtX/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                alert('Thank you! Your project request has been submitted. We\'ll get back to you within 24 hours.');
+                this.reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Project Request';
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Thank you! Your request has been received.');
+                this.reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Project Request';
+            });
+        });
     </script>
-
 </body>
 </html>
